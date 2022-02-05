@@ -23,9 +23,10 @@ void loop() {
   digitalWrite(trigPinRight, HIGH); 
   delayMicroseconds(10); 
   digitalWrite(trigPinRight, LOW); 
-  // Finds how long the echoPin is set to high for right
+  // Finds duration of pulse
   timeRight = pulseIn(echoPinRight, HIGH); 
-  distanceRight = (timeRight*.0343)/2; 
+  // Distance = speed * (time / 2)
+  distanceRight = (timeRight*speed_sound)/2; 
 
   delayMicroseconds(2);
   // Sends 8 microsecond pulse for left
@@ -35,9 +36,10 @@ void loop() {
   delayMicroseconds(10); 
   digitalWrite(trigPinLeft, LOW); 
 
-  // Finds how long the echoPin is set to high for left
+  // Finds duration of pulse
   timeLeft = pulseIn(echoPinLeft, HIGH);
-  distanceLeft = (timeLeft*.0343)/2;
+  // Distance = speed * (time / 2)
+  distanceLeft = (timeLeft*speed_sound)/2;
 
   Serial.print("Distance (Right): ");
   Serial.println(distanceRight);
